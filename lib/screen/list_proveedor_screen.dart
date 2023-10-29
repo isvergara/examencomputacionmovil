@@ -32,9 +32,8 @@ class ListProveedorScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(46, 151, 51, 1),
-                minimumSize: const Size(double.infinity, 0), // Ancho fijo
-                alignment:
-                    Alignment.centerLeft, // Alinea el contenido a la izquierda
+                minimumSize: const Size(double.infinity, 0),
+                alignment: Alignment.centerLeft,
               ),
               child: Text(
                 "Nombre: ${proveedor.proveedorName} Apellido: ${proveedor.proveedorLastName}\nE-Mail: ${proveedor.proveedorMail}",

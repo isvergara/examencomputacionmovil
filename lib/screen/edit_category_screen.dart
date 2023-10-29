@@ -54,7 +54,7 @@ class _CategoryScreenBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            backgroundColor: Colors.red, // Color de fondo del botón
+            backgroundColor: Colors.red,
             onPressed: () async {
               if (!categoryForm.isValidForm()) return;
               await categoryService.deleteCategory(
@@ -65,7 +65,7 @@ class _CategoryScreenBody extends StatelessWidget {
           ),
           const SizedBox(width: 20),
           FloatingActionButton(
-            backgroundColor: Colors.green, // Color de fondo del botón
+            backgroundColor: Colors.green,
             onPressed: () async {
               if (!categoryForm.isValidForm()) return;
               await categoryService.editOrCreateCategory(categoryForm.category);
@@ -119,7 +119,7 @@ class _CategoryForm extends StatelessWidget {
   }
 
   BoxDecoration _createDecoration() => const BoxDecoration(
-        color: Colors.white, // Color de fondo de la pantalla
+        color: Colors.white,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(25),
           bottomRight: Radius.circular(25),

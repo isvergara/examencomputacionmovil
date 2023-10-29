@@ -9,11 +9,10 @@ class AuthBackgorundC1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizeScreen =
-        MediaQuery.of(context).size; //obtiene el tamaño de la pantalla
+    final sizeScreen = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: sizeScreen.height * 0.4, //40% de la pantalla
+      height: sizeScreen.height * 0.4,
       decoration: orangeDecoration(),
       child: const Stack(
         children: [

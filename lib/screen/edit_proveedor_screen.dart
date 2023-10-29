@@ -65,7 +65,7 @@ class _ProveedorScreenBody extends StatelessWidget {
           ),
           const SizedBox(width: 20),
           FloatingActionButton(
-            backgroundColor: Colors.green, // Color de fondo del botón
+            backgroundColor: Colors.green,
             onPressed: () async {
               if (!proveedorForm.isValidForm()) return;
               await proveedorService
@@ -112,7 +112,6 @@ class _ProveedorForm extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-
               TextFormField(
                 initialValue: proveedor.proveedorLastName,
                 onChanged: (value) => proveedor.proveedorLastName = value,
@@ -128,7 +127,6 @@ class _ProveedorForm extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-
               TextFormField(
                 initialValue: proveedor.proveedorMail,
                 onChanged: (value) => proveedor.proveedorMail = value,
@@ -144,7 +142,6 @@ class _ProveedorForm extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Otros campos de formulario
             ],
           ),
         ),
@@ -153,7 +150,7 @@ class _ProveedorForm extends StatelessWidget {
   }
 
   BoxDecoration _createDecoration() => const BoxDecoration(
-        color: Colors.white, // Color de fondo de la pantalla
+        color: Colors.white,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(25),
           bottomRight: Radius.circular(25),
