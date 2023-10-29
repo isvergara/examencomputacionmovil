@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 
 class CardContainer extends StatelessWidget {
@@ -22,6 +26,6 @@ class CardContainer extends StatelessWidget {
 BoxDecoration cardDecoration() => BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(color: Colors.black, blurRadius: 15, offset: Offset(0, 5)),
         ]);

@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -23,10 +27,9 @@ class ProductService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/product_list_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.get(url, headers: {'authorization': basicAuth});
     final productsMap = Product.fromJson(response.body);
-    print(response.body);
     products = productsMap.listado;
     isLoading = false;
     notifyListeners();
@@ -36,9 +39,9 @@ class ProductService extends ChangeNotifier {
     isEditCreate = true;
     notifyListeners();
     if (product.productId == 0) {
-      await this.createProduct(product);
+      await createProduct(product);
     } else {
-      await this.updateProduct(product);
+      await updateProduct(product);
     }
 
     isEditCreate = false;
@@ -50,7 +53,7 @@ class ProductService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/product_edit_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: product.toJson(), headers: {
       'authorization': basicAuth,
       'Content-Type': 'application/json; charset=UTF-8',
@@ -58,7 +61,6 @@ class ProductService extends ChangeNotifier {
     final decodeResp = response.body;
     print(decodeResp);
 
-    //actualizamos el listado
     final index = products
         .indexWhere((element) => element.productId == product.productId);
     products[index] = product;
@@ -71,14 +73,15 @@ class ProductService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/product_add_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: product.toJson(), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
     final decodeResp = response.body;
+    // ignore: avoid_print
     print(decodeResp);
-    this.products.add(product);
+    products.add(product);
     return '';
   }
 
@@ -87,14 +90,14 @@ class ProductService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/product_del_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: product.toJson(), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
     final decodeResp = response.body;
     print(decodeResp);
-    this.products.clear(); //borra todo el listado
+    products.clear(); //borra todo el listado
     loadProducts();
     Navigator.of(context).pushNamed('list');
     return '';

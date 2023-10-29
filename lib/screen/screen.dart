@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 export 'package:examen_final/screen/register_user_screen.dart';
 export 'package:examen_final/screen/loading_screen.dart';
 export 'package:examen_final/screen/edit_product_screen.dart';

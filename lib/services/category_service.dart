@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -23,7 +27,7 @@ class CategoryService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/category_list_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.get(url, headers: {'authorization': basicAuth});
     final categoriesMap = Category.fromJson(response.body);
     print(response.body);
@@ -36,9 +40,9 @@ class CategoryService extends ChangeNotifier {
     isEditCreate = true;
     notifyListeners();
     if (category.categoryId == 0) {
-      await this.createCategory(category);
+      await createCategory(category);
     } else {
-      await this.updateCategory(category);
+      await updateCategory(category);
     }
 
     isEditCreate = false;
@@ -50,7 +54,7 @@ class CategoryService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/category_edit_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: category.toJson(), headers: {
       'authorization': basicAuth,
       'Content-Type': 'application/json; charset=UTF-8',
@@ -71,14 +75,14 @@ class CategoryService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/category_add_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: category.toJson(), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
     final decodeResp = response.body;
     print(decodeResp);
-    this.categories.add(category);
+    categories.add(category);
     return '';
   }
 
@@ -87,14 +91,14 @@ class CategoryService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/category_del_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: category.toJson(), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
     final decodeResp = response.body;
     print(decodeResp);
-    this.categories.clear(); //borra todo el listado
+    categories.clear(); //borra todo el listado
     loadCategories();
     Navigator.of(context).pushNamed('list');
     return '';

@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -23,7 +27,7 @@ class ProveedorService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/provider_list_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.get(url, headers: {'authorization': basicAuth});
     final proveedorMap = Proveedor.fromJson(response.body);
     print(response.body);
@@ -36,9 +40,9 @@ class ProveedorService extends ChangeNotifier {
     isEditCreate = true;
     notifyListeners();
     if (proveedor.proveedorId == 0) {
-      await this.createProveedor(proveedor);
+      await createProveedor(proveedor);
     } else {
-      await this.updateProveedor(proveedor);
+      await updateProveedor(proveedor);
     }
 
     isEditCreate = false;
@@ -50,7 +54,7 @@ class ProveedorService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/provider_edit_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: proveedor.toJson(), headers: {
       'authorization': basicAuth,
       'Content-Type': 'application/json; charset=UTF-8',
@@ -71,14 +75,14 @@ class ProveedorService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/provider_add_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: proveedor.toJson(), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
     final decodeResp = response.body;
     print(decodeResp);
-    this.proveedores.add(proveedor);
+    proveedores.add(proveedor);
     return '';
   }
 
@@ -87,14 +91,14 @@ class ProveedorService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/provider_del_rest/',
     );
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
+    String basicAuth = 'Basic ${base64Encode(utf8.encode('$_user:$_pass'))}';
     final response = await http.post(url, body: proveedor.toJson(), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
     final decodeResp = response.body;
     print(decodeResp);
-    this.proveedores.clear(); //borra todo el listado
+    proveedores.clear(); //borra todo el listado
     loadProveedores();
     Navigator.of(context).pushNamed('list');
     return '';

@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/providers/category_form_provider.dart';
 import 'package:examen_final/services/category_service.dart';
@@ -31,9 +35,9 @@ class _CategoryScreenBody extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Categoría'),
+        title: const Text('Editar Categoría'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -50,7 +54,6 @@ class _CategoryScreenBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            child: const Icon(Icons.delete_forever),
             backgroundColor: Colors.red, // Color de fondo del botón
             onPressed: () async {
               if (!categoryForm.isValidForm()) return;
@@ -58,16 +61,17 @@ class _CategoryScreenBody extends StatelessWidget {
                   categoryForm.category, context);
             },
             heroTag: null,
+            child: const Icon(Icons.delete_forever),
           ),
           const SizedBox(width: 20),
           FloatingActionButton(
-            child: const Icon(Icons.save_alt_outlined),
             backgroundColor: Colors.green, // Color de fondo del botón
             onPressed: () async {
               if (!categoryForm.isValidForm()) return;
               await categoryService.editOrCreateCategory(categoryForm.category);
             },
             heroTag: null,
+            child: const Icon(Icons.save_alt_outlined),
           ),
         ],
       ),
@@ -96,8 +100,9 @@ class _CategoryForm extends StatelessWidget {
                 initialValue: category.categoryName,
                 onChanged: (value) => category.categoryName = value,
                 validator: (value) {
-                  if (value == null || value.length < 1)
+                  if (value == null || value.isEmpty) {
                     return 'El nombre de la categoria es un campo obligatorio';
+                  }
                   return null;
                 },
                 decoration: InputDecortions.authInputDecoration(

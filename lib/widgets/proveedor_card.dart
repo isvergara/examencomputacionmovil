@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/models/proveedores.dart';
 
@@ -45,9 +49,6 @@ class _PriceTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FittedBox(
-        fit: BoxFit.contain,
-      ),
       width: 100,
       height: 70,
       alignment: Alignment.center,
@@ -55,6 +56,9 @@ class _PriceTag extends StatelessWidget {
           color: Color.fromRGBO(46, 151, 51, 1),
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(25), bottomLeft: Radius.circular(25))),
+      child: const FittedBox(
+        fit: BoxFit.contain,
+      ),
     );
   }
 }
@@ -67,13 +71,6 @@ class _State extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FittedBox(
-        fit: BoxFit.contain,
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(proveedor.proveedorState,
-                style: TextStyle(fontSize: 20, color: Colors.white))),
-      ),
       width: 100,
       height: 70,
       alignment: Alignment.center,
@@ -81,6 +78,13 @@ class _State extends StatelessWidget {
           color: Colors.red,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(proveedor.proveedorState,
+                style: const TextStyle(fontSize: 20, color: Colors.white))),
+      ),
     );
   }
 }
@@ -105,7 +109,7 @@ class _ProveedorDetails extends StatelessWidget {
           children: [
             Text(
               proveedor.proveedorName,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
@@ -138,7 +142,7 @@ class _BackGroundImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         height: 400,
         child: url == null

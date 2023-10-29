@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -13,7 +17,6 @@ class AuthService extends ChangeNotifier {
     };
     final url = Uri.https(
         _baseUrl, '/v1/accounts:signInWithPassword', {'key': _firebaseToken});
-    print(authData);
     final response = await http.post(url, body: json.encode(authData));
     final Map<String, dynamic> decodeResponse = json.decode(response.body);
     if (decodeResponse.containsKey('idToken')) {
@@ -30,7 +33,6 @@ class AuthService extends ChangeNotifier {
     };
     final url =
         Uri.https(_baseUrl, '/v1/accounts:signUp', {'key': _firebaseToken});
-    print(authData);
     final response = await http.post(url, body: json.encode(authData));
     final Map<String, dynamic> decodeResponse = json.decode(response.body);
     if (decodeResponse.containsKey('idToken')) {

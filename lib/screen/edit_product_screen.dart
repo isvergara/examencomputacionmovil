@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/providers/product_form_provider.dart';
 import 'package:examen_final/services/product_service.dart';
@@ -31,9 +35,9 @@ class _ProductScreenBody extends StatelessWidget {
     final productForm = Provider.of<ProductFormProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Producto'),
+        title: const Text('Editar Producto'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -77,21 +81,21 @@ class _ProductScreenBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            child: const Icon(Icons.delete_forever),
             onPressed: () async {
               if (!productForm.isValidForm()) return;
               await productService.deleteProduct(productForm.product, context);
             },
             heroTag: null,
+            child: const Icon(Icons.delete_forever),
           ),
           const SizedBox(width: 20),
           FloatingActionButton(
-            child: const Icon(Icons.save_alt_outlined),
             onPressed: () async {
               if (!productForm.isValidForm()) return;
               await productService.editOrCreateProduct(productForm.product);
             },
             heroTag: null,
+            child: const Icon(Icons.save_alt_outlined),
           ),
         ],
       ),
@@ -120,8 +124,9 @@ class _ProductForm extends StatelessWidget {
                 initialValue: product.productName,
                 onChanged: (value) => product.productName = value,
                 validator: (value) {
-                  if (value == null || value.length < 1)
+                  if (value == null || value.isEmpty) {
                     return 'el nombre es obligatorio';
+                  }
                   return null;
                 },
                 decoration: InputDecortions.authInputDecoration(
@@ -149,7 +154,7 @@ class _ProductForm extends StatelessWidget {
               SwitchListTile.adaptive(
                 value: true,
                 onChanged: (value) {},
-                activeColor: Color.fromRGBO(46, 151, 51, 1),
+                activeColor: const Color.fromRGBO(46, 151, 51, 1),
                 title: const Text('Disponible'),
               )
             ],

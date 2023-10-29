@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/models/productos.dart';
 import 'package:examen_final/services/product_service.dart';
@@ -10,7 +14,7 @@ class ListProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productService = Provider.of<ProductService>(context);
-    if (productService.isLoading) return LoadingScreen();
+    if (productService.isLoading) return const LoadingScreen();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Listado de productos'),

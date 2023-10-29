@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/models/proveedores.dart';
 import 'package:examen_final/services/services.dart';
@@ -10,7 +14,7 @@ class ListProveedorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final proveedorService = Provider.of<ProveedorService>(context);
-    if (proveedorService.isLoading) return LoadingScreen();
+    if (proveedorService.isLoading) return const LoadingScreen();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Listado de proveedores'),
@@ -19,7 +23,7 @@ class ListProveedorScreen extends StatelessWidget {
         itemCount: proveedorService.proveedores.length,
         itemBuilder: (BuildContext context, index) {
           final proveedor = proveedorService.proveedores[index];
-          return Container(
+          return SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
@@ -27,20 +31,13 @@ class ListProveedorScreen extends StatelessWidget {
                 Navigator.pushNamed(context, 'editproveedor');
               },
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(46, 151, 51, 1),
-                minimumSize: Size(double.infinity, 0), // Ancho fijo
+                backgroundColor: const Color.fromRGBO(46, 151, 51, 1),
+                minimumSize: const Size(double.infinity, 0), // Ancho fijo
                 alignment:
                     Alignment.centerLeft, // Alinea el contenido a la izquierda
               ),
               child: Text(
-                "Nombre: " +
-                    proveedor.proveedorName +
-                    " " +
-                    "Apellido: " +
-                    proveedor.proveedorLastName +
-                    "\n" +
-                    "E-Mail: " +
-                    proveedor.proveedorMail,
+                "Nombre: ${proveedor.proveedorName} Apellido: ${proveedor.proveedorLastName}\nE-Mail: ${proveedor.proveedorMail}",
                 textAlign: TextAlign.left,
               ),
             ),

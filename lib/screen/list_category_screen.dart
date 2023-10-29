@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/models/categorias.dart';
 import 'package:examen_final/services/services.dart';
@@ -10,7 +14,7 @@ class ListCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryService = Provider.of<CategoryService>(context);
-    if (categoryService.isLoading) return LoadingScreen();
+    if (categoryService.isLoading) return const LoadingScreen();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Listado de categorias'),
@@ -25,11 +29,11 @@ class ListCategoryScreen extends StatelessWidget {
               Navigator.pushNamed(context, 'editcategory');
             },
             style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(46, 151, 51, 1),
+              backgroundColor: const Color.fromRGBO(46, 151, 51, 1),
               alignment: Alignment.centerLeft,
             ),
             child: Text(
-              "Nombre: " + category.categoryName,
+              "Nombre: ${category.categoryName}",
             ),
           );
         },

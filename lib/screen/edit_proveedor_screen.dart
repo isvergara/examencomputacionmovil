@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/providers/proveedor_form_provider.dart';
 import 'package:examen_final/services/proveedor_service.dart';
@@ -31,9 +35,9 @@ class _ProveedorScreenBody extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Proveedor'),
+        title: const Text('Editar Proveedor'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -50,7 +54,6 @@ class _ProveedorScreenBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            child: const Icon(Icons.delete_forever),
             backgroundColor: Colors.red,
             onPressed: () async {
               if (!proveedorForm.isValidForm()) return;
@@ -58,10 +61,10 @@ class _ProveedorScreenBody extends StatelessWidget {
                   proveedorForm.proveedor, context);
             },
             heroTag: null,
+            child: const Icon(Icons.delete_forever),
           ),
           const SizedBox(width: 20),
           FloatingActionButton(
-            child: const Icon(Icons.save_alt_outlined),
             backgroundColor: Colors.green, // Color de fondo del botón
             onPressed: () async {
               if (!proveedorForm.isValidForm()) return;
@@ -69,6 +72,7 @@ class _ProveedorScreenBody extends StatelessWidget {
                   .editOrCreateProveedor(proveedorForm.proveedor);
             },
             heroTag: null,
+            child: const Icon(Icons.save_alt_outlined),
           ),
         ],
       ),
@@ -97,8 +101,9 @@ class _ProveedorForm extends StatelessWidget {
                 initialValue: proveedor.proveedorName,
                 onChanged: (value) => proveedor.proveedorName = value,
                 validator: (value) {
-                  if (value == null || value.length < 1)
+                  if (value == null || value.isEmpty) {
                     return 'el nombre es obligatorio';
+                  }
                   return null;
                 },
                 decoration: InputDecortions.authInputDecoration(
@@ -112,8 +117,9 @@ class _ProveedorForm extends StatelessWidget {
                 initialValue: proveedor.proveedorLastName,
                 onChanged: (value) => proveedor.proveedorLastName = value,
                 validator: (value) {
-                  if (value == null || value.length < 1)
+                  if (value == null || value.isEmpty) {
                     return 'el apellido es obligatorio';
+                  }
                   return null;
                 },
                 decoration: InputDecortions.authInputDecoration(
@@ -127,8 +133,9 @@ class _ProveedorForm extends StatelessWidget {
                 initialValue: proveedor.proveedorMail,
                 onChanged: (value) => proveedor.proveedorMail = value,
                 validator: (value) {
-                  if (value == null || value.length < 1)
+                  if (value == null || value.isEmpty) {
                     return 'el email es obligatorio';
+                  }
                   return null;
                 },
                 decoration: InputDecortions.authInputDecoration(

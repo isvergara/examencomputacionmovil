@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 import 'package:examen_final/screen/screen.dart';
 import '../theme/my_theme.dart';
@@ -9,9 +13,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mi Aplicación de Compras'),
+        title: const Text('Mi Aplicación de Compras'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -38,7 +42,7 @@ class CustomButton extends StatelessWidget {
   final String label;
   final Widget destination;
 
-  CustomButton({required this.label, required this.destination});
+  const CustomButton({required this.label, required this.destination});
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +55,11 @@ class CustomButton extends StatelessWidget {
         );
       },
       style: ElevatedButton.styleFrom(
-        primary: MyTheme.primary,
+        backgroundColor: MyTheme.primary,
       ),
       child: Text(
         label,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
         ),
       ),

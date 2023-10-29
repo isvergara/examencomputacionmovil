@@ -1,3 +1,7 @@
+//ISMAEL VERGARA VIDELA
+//16.936.330-7
+//SEM 2 2023 | COMPUTACIÓN MÓVIL | eICFE1119-07
+
 import 'package:flutter/material.dart';
 
 class InputDecortions {
@@ -22,7 +26,7 @@ class InputDecortions {
         prefixIcon: prefixIcon != null
             ? Icon(
                 prefixIcon,
-                color: Color.fromRGBO(46, 151, 51, 1),
+                color: const Color.fromRGBO(46, 151, 51, 1),
               )
             : null);
   }
